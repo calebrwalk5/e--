@@ -3,12 +3,6 @@
 #include <stdlib.h>
 
 int main(int argc, char** argv) {
-  // see if the user did something wrong 
-  if (argc != 2) {
-    printf("Usage: %s <input file>\n", argv[0]);
-    return 1;
-  }
-
   // open the input file
   FILE* input = fopen(argv[1], "r");
   if (!input) {
@@ -55,7 +49,8 @@ int main(int argc, char** argv) {
       } else if (strcmp(type, "float") == 0) {
         // read a floating point value
         float value;
-        if (fscanf(input, "%f", &value) == 1) {rm 
+        if (fscanf(input, "%f", &value) == 1) {//rm 
+        // why was rm here in the first place?
           printf("Read float variable '%s' with value %f\n", name, value);
         } else {
           printf("Error reading float variable '%s'\n", name);
