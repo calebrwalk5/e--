@@ -27,7 +27,6 @@ int main(int argc, char** argv) {
       char formatString[256];
       if (sscanf(line, "printf %[^\n]", formatString) == 1) {
         printf(formatString);
-        fflush(stdout); // flush the output buffer
       }
     } else if (c == 'v' && fgetc(input) == 'a' && fgetc(input) == 'r') {
       printf("DEBUG: reading variable\n");
@@ -35,14 +34,14 @@ int main(int argc, char** argv) {
       char type[256];
       char name[256];
       int i = 0;
-      while ((c = fgetc(input)) != ' ' && c != '=') {
+      while ((c = fgetc(input)) != EOF && c != ' ' && c != '=') { // check for end of file
         if (i < sizeof(type) - 1) { // make sure the buffer is not full
           type[i++] = c;
         }
       }
       type[i] = '\0';
       i = 0;
-      while ((c = fgetc(input)) != '=') {
+      while ((c = fgetc(input)) != EOF && c != '=') { // check for end of file
         if (i < sizeof(name) - 1) { // make sure the buffer is not full
           name[i++] = c;
         }
