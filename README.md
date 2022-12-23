@@ -1,2 +1,2 @@
 # mini-c-compiler
-Mini C compiler
+My goal is to make the simplest C compiler possible
